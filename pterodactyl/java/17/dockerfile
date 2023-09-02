@@ -3,6 +3,7 @@ FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:17-alpine
 LABEL author="joshrpg" maintainer=""
 LABEL org.opencontainers.image.source="https://github.com/joshrpg/images"
 LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.description="A java 17 image to be used with https://pterodactyl.io/"
 
 RUN apk --no-cache update
 RUN apk --no-cache upgrade
