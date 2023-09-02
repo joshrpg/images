@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM --platform=$TARGETOS/$TARGETARCH alpine:latest
 
 LABEL author="joshrpg" maintainer=""
 LABEL org.opencontainers.image.source="https://github.com/joshrpg/images"
