@@ -1,4 +1,4 @@
-name: build pterodactyl app images
+name: build pterodactyl java images
 on:
   schedule:
     - cron: '0 23 * * *'
