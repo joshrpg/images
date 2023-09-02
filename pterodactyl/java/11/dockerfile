@@ -1,0 +1,18 @@
+FROM eclipse-temurin:11-alpine
+
+LABEL author="joshrpg" maintainer=""
+LABEL org.opencontainers.image.source="https://github.com/joshrpg/images"
+LABEL org.opencontainers.image.licenses=MIT
+
+RUN apk --no-cache update
+RUN apk --no-cache upgrade
+
+RUN apk --no-cache add bash
+
+RUN adduser container --home /home/container --disabled-password
+USER container
+ENV USER=container HOME=/home/container
+WORKDIR  /home/container
+
+ADD ../entrypoint.sh /entrypoint.sh
+CMD [ "/bin/bash", "/entrypoint.sh" ]
