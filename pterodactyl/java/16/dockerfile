@@ -1,4 +1,4 @@
-FROM eclipse-temurin:16-alpine
+FROM --platform=$TARGETOS/$TARGETARCH eclipse-temurin:16-alpine
 
 LABEL author="joshrpg" maintainer=""
 LABEL org.opencontainers.image.source="https://github.com/joshrpg/images"
