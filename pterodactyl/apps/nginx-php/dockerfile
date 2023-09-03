@@ -7,12 +7,13 @@ LABEL org.opencontainers.image.description="A nginx image with php 8.2 to be use
 
 RUN apk --no-cache update
 RUN apk --no-cache upgrade
-RUN apk --no-cache add curl ca-certificates nginx
-RUN apk --no-cache add php82 php82-fpm php82-opcache php82-gd php82-zlib php82-curl
+RUN apk --no-cache add curl ca-certificates nginx php82 php82-fpm php82-opcache php82-gd php82-zlib php82-curl
 
 RUN adduser -D container
-
 RUN chown container:container -R /home/container
+
+ADD files /nginx-files
+RUN chown container:container -R /nginx-files
 
 USER container
 ENV USER=container HOME=/home/container
