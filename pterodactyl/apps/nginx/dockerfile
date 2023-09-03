@@ -12,9 +12,6 @@ RUN apk --no-cache add curl ca-certificates nginx
 RUN adduser -D container
 RUN chown container:container -R /home/container
 
-ADD files /nginx-files
-RUN chown container:container -R /nginx-files
-
 USER container
 ENV USER=container HOME=/home/container
 
