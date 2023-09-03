@@ -3,11 +3,12 @@ FROM --platform=$TARGETOS/$TARGETARCH alpine:latest
 LABEL author="joshrpg" maintainer=""
 LABEL org.opencontainers.image.source="https://github.com/joshrpg/images"
 LABEL org.opencontainers.image.licenses=MIT
-LABEL org.opencontainers.image.description="A nginx image to be used with https://pterodactyl.io/"
+LABEL org.opencontainers.image.description="A nginx image with php 8.2 to be used with https://pterodactyl.io/"
 
 RUN apk --no-cache update
 RUN apk --no-cache upgrade
-RUN apk --no-cache add curl ca-certificates nginx 
+RUN apk --no-cache add curl ca-certificates nginx
+RUN apk --no-cache add php82 php82-fpm php82-opcache php82-gd php82-zlib php82-curl
 
 RUN adduser -D container
 
