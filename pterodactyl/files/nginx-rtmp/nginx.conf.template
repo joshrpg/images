@@ -2,6 +2,8 @@ daemon off;
 pid /home/container/tmp/nginx.pid;
 worker_processes auto;
 
+error_log stderr info;
+
 load_module /usr/lib/nginx/modules/ngx_rtmp_module.so;
 
 events {
@@ -9,16 +11,27 @@ events {
 }
 
 http {
-  server {
-    listen ${SERVER_PORT};
+  # Pterodactyl is apparently is a little touchy on this so we have to "hardcode"
+  client_body_temp_path /home/container/tmp/client_temp;
+  proxy_temp_path       /home/container/tmp/proxy_temp_path;
+  fastcgi_temp_path     /home/container/tmp/fastcgi_temp;
+  uwsgi_temp_path       /home/container/tmp/uwsgi_temp;
+  scgi_temp_path        /home/container/tmp/scgi_temp;
 
+  error_log /dev/null;
+  access_log /dev/null;
+
+  server {
+    
+    listen ${SERVER_PORT};
+    
     location /hls {
       # Serve HLS fragments
       types {
           application/vnd.apple.mpegurl m3u8;
           video/mp2t ts;
       }
-      root /home/container/tmp;
+      root /home/container/web;
       add_header Cache-Control no-cache;
     }
   }
@@ -42,9 +55,11 @@ rtmp {
       deny publish all;
       
       hls on;
-      hls_path /home/container/tmp/hls;
+      hls_path /home/container/web;
+      
       # Thies 2 lines should help with latency
       hls_playlist_length 4s;
+      
       # The hls_fragment should match your keyframe interval in obs see screenshot in readme
       hls_fragment 1s;
       
