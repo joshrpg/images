@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.description="A nginx image to be used with https:
 
 RUN apk --no-cache update
 RUN apk --no-cache upgrade
-RUN apk --no-cache add curl ca-certificates nginx-mod-rtmp
+RUN apk --no-cache add curl ca-certificates nginx-mod-rtmp envsubst
 
 RUN adduser -D container
 RUN chown container:container -R /home/container
