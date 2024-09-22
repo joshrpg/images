@@ -18,6 +18,7 @@ jobs:
         images:
           - nginx
           - nginx-php
+          - nginx-rtmp
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-buildx-action@v2
