@@ -22,5 +22,6 @@ ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
 ADD ./entrypoint.sh /entrypoint.sh
-RUN chown container:container /entrypoint.sh
+COPY --chown=container:container ./entrypoint.sh /entrypoint.sh
+# RUN chown container:container /entrypoint.sh
 CMD ["/bin/ash", "/entrypoint.sh"]
