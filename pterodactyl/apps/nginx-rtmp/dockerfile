@@ -13,9 +13,6 @@ RUN adduser -D container
 RUN chown container:container -R /home/container
 RUN chown container:container -R /var/lib/nginx
 
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
-
 USER container
 ENV USER=container HOME=/home/container
 
