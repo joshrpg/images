@@ -10,4 +10,4 @@ if [ ! -d /home/container/logs ]; then
 fi
 
 envsubst < nginx.conf.template > nginx.conf
-/usr/sbin/nginx -c /home/container/nginx.conf;
+/usr/sbin/nginx -c /home/container/nginx.conf -p /home/container
