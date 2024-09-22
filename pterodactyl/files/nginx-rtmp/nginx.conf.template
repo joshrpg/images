@@ -10,7 +10,7 @@ events {
 
 http {
   server {
-    listen ${PORT};
+    listen ${SERVER_PORT};
 
     location /hls {
       # Serve HLS fragments
