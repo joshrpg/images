@@ -1,8 +1,12 @@
 #!/bin/ash
-mkdir /home/container/tmp
-mkdir /home/container/logs
+if [ -f /home/container/tmp ]; then
+	mkdir /home/container/tmp
+else
+  rm -rf /home/container/tmp/*
+fi
 
-echo "⟳ Starting Nginx..."
-echo "✓ Successfully started"
-/usr/sbin/nginx -c /home/container/nginx.conf
-rm -rf /home/container/tmp
+if [ -f /home/container/tmp ]; then
+  mkdir /home/container/logs;
+fi
+
+/usr/sbin/nginx -c /home/container/nginx.conf;
