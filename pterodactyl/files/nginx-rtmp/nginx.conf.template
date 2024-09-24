@@ -55,10 +55,10 @@ rtmp {
       deny publish all;
       
       hls on;
-      hls_path /home/container/web;
+      hls_path /home/container/web/hls;
       
       # Thies 2 lines should help with latency
-      hls_playlist_length 4s;
+      hls_playlist_length 6s;
       
       # The hls_fragment should match your keyframe interval in obs see screenshot in readme
       hls_fragment 1s;
