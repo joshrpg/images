@@ -18,7 +18,7 @@ http {
   uwsgi_temp_path       /home/container/tmp/uwsgi_temp;
   scgi_temp_path        /home/container/tmp/scgi_temp;
 
-  error_log /dev/null;
+  error_log stderr info;
   access_log /dev/null;
 
   server {
